@@ -14,6 +14,12 @@ public class Imagen {
     public static final String EXTENSION = ".png";
     public static final String VACIA = "/imagenes/nada.png";
     public static final String CARTA_ROJA = "/imagenes/rojo.png";
+    public static final String PATO = "/imagenes/pato.png";
+    public static final String FABI = "/imagenes/fabi.png";
+    public static final String ARU = "/imagenes/aru.png";
+    public static final String LINDA = "/imagenes/linda.png";
+    public static final String GILDA = "/imagenes/gilda.png";
+    public static final String ANGELES = "/imagenes/angeles.png";
     public static final String FONDO_ESP1 = "/imagenes/fondosCartas/fondo_esp1.png";
     public static final String FONDO_ESP2 = "/imagenes/fondosCartas/fondo_esp2.png";
     public static final String FONDO_ESP3 = "/imagenes/fondosCartas/fondo_esp3.png";
@@ -22,4 +28,5 @@ public class Imagen {
     public static final String FONDO_ESP6 = "/imagenes/fondosCartas/fondo_esp6.png";
     public static final String FONDO_ESP7 = "/imagenes/fondosCartas/fondo_esp7.png";
     public static final String FONDO_ESP8 = "/imagenes/fondosCartas/fondo_esp8.png";
+    public static String CARTA_VUELTA ;
 }
