@@ -10,29 +10,19 @@
  */
 package aplicacion;
 
-import clases.Carta;
-import clases.Cuadrante;
-import clases.Imagen;
-import clases.Mazo;
-import clases.OrdenDeJugada;
-import clases.Pixel;
+import acercade.AcercaDe;
+import acercade.GPL;
+import clases.*;
 import java.awt.Point;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import utilidades.Abrir;
 import utilidades.Cambiar;
-import utilidades.Guardar;
 import utilidades.Mensajes;
-import acercade.*;
 
 /**
  *
@@ -45,24 +35,26 @@ public class Aplicacion extends javax.swing.JFrame{
     private int x, y, xref, yref;
     private int indice;
     private int c = 1;
-    private List lesp1 = new ArrayList();
-    private List lesp2 = new ArrayList();
-    private List lesp3 = new ArrayList();
-    private List lesp4 = new ArrayList();
-    private List lesp5 = new ArrayList();
-    private List lesp6 = new ArrayList();
-    private List lesp7 = new ArrayList();
-    private List lesp8 = new ArrayList();
+    private List<Carta> lesp1 = new ArrayList<>();
+    private List<Carta> lesp2 = new ArrayList<>();
+    private List<Carta> lesp3 = new ArrayList<>();
+    private List<Carta> lesp4 = new ArrayList<>();
+    private List<Carta> lesp5 = new ArrayList<>();
+    private List<Carta> lesp6 = new ArrayList<>();
+    private List<Carta> lesp7 = new ArrayList<>();
+    private List<Carta> lesp8 = new ArrayList<>();
 
     /** Creates new form form */
     public Aplicacion() {
         initComponents();
+        Imagen.CARTA_VUELTA = Imagen.CARTA_ROJA;
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("JSolitario");
         inicializarMazo(false);
         Cambiar.iconoDeFormulario(this, "/imagenes/icono.png");
         initAcercaDe();
+        
     }
 
     /** This method is called from within the constructor to
@@ -74,6 +66,12 @@ public class Aplicacion extends javax.swing.JFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        formBar = new javax.swing.JFrame();
+        esp9 = new javax.swing.JLabel();
+        esp10 = new javax.swing.JLabel();
+        esp11 = new javax.swing.JLabel();
+        esp12 = new javax.swing.JLabel();
+        esp13 = new javax.swing.JLabel();
         carta1 = new javax.swing.JLabel();
         carta2 = new javax.swing.JLabel();
         cartaVuelta = new javax.swing.JLabel();
@@ -86,6 +84,7 @@ public class Aplicacion extends javax.swing.JFrame{
         esp8 = new javax.swing.JLabel();
         esp1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         cartasRestantes = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -94,11 +93,92 @@ public class Aplicacion extends javax.swing.JFrame{
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         verCartaAbajo = new javax.swing.JCheckBoxMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menuItemAcercade = new javax.swing.JMenuItem();
+
+        esp9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        esp9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/gilda.png"))); // NOI18N
+        esp9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        esp9.setOpaque(true);
+        esp9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                esp9MouseReleased(evt);
+            }
+        });
+
+        esp10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        esp10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pato.png"))); // NOI18N
+        esp10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        esp10.setOpaque(true);
+        esp10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                esp10MouseReleased(evt);
+            }
+        });
+
+        esp11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        esp11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fabi.png"))); // NOI18N
+        esp11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        esp11.setOpaque(true);
+        esp11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                esp11MouseReleased(evt);
+            }
+        });
+
+        esp12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        esp12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/angeles.png"))); // NOI18N
+        esp12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        esp12.setOpaque(true);
+        esp12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                esp12MouseReleased(evt);
+            }
+        });
+
+        esp13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        esp13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/aru.png"))); // NOI18N
+        esp13.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        esp13.setOpaque(true);
+        esp13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                esp13MouseReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout formBarLayout = new javax.swing.GroupLayout(formBar.getContentPane());
+        formBar.getContentPane().setLayout(formBarLayout);
+        formBarLayout.setHorizontalGroup(
+            formBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(formBarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(esp10, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(esp9, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(esp11, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(esp12, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(esp13, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        formBarLayout.setVerticalGroup(
+            formBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(formBarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(formBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(esp13)
+                    .addComponent(esp12)
+                    .addComponent(esp11)
+                    .addComponent(esp9)
+                    .addComponent(esp10))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -130,7 +210,6 @@ public class Aplicacion extends javax.swing.JFrame{
         carta2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         getContentPane().add(carta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 120, 170));
 
-        cartaVuelta.setBackground(new java.awt.Color(254, 254, 254));
         cartaVuelta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cartaVuelta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/rojo.png"))); // NOI18N
         cartaVuelta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -138,6 +217,9 @@ public class Aplicacion extends javax.swing.JFrame{
         cartaVuelta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 cartaVueltaMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                cartaVueltaMouseReleased(evt);
             }
         });
         getContentPane().add(cartaVuelta, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, -1, 170));
@@ -196,17 +278,22 @@ public class Aplicacion extends javax.swing.JFrame{
         esp1.setOpaque(true);
         getContentPane().add(esp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 120, 170));
 
-        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 1, 13));
+        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 1, 13)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(254, 254, 254));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Cartas en el mazo: ");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 150, 30));
 
-        cartasRestantes.setFont(new java.awt.Font("DejaVu Sans", 1, 13));
+        jLabel2.setFont(new java.awt.Font("DejaVu Sans", 1, 13)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 560, 250, 30));
+
+        cartasRestantes.setFont(new java.awt.Font("DejaVu Sans", 1, 13)); // NOI18N
         cartasRestantes.setForeground(new java.awt.Color(254, 254, 254));
         cartasRestantes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         cartasRestantes.setText("xx");
-        getContentPane().add(cartasRestantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 560, 40, 30));
+        getContentPane().add(cartasRestantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 560, 50, 30));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.png"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
@@ -224,6 +311,7 @@ public class Aplicacion extends javax.swing.JFrame{
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Deshacer Jugada");
+        jMenuItem2.setEnabled(false);
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -239,6 +327,14 @@ public class Aplicacion extends javax.swing.JFrame{
             }
         });
         jMenu1.add(jMenuItem4);
+
+        jMenuItem5.setText("Cambiar baraja");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem5);
 
         jMenuItem3.setText("Salir");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -276,9 +372,7 @@ public class Aplicacion extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void cartaVueltaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartaVueltaMousePressed
-        reubicarCarta();
-        indice -= 2;
-        cartas(indice);
+        
 }//GEN-LAST:event_cartaVueltaMousePressed
 
     private void carta1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carta1MousePressed
@@ -300,41 +394,80 @@ public class Aplicacion extends javax.swing.JFrame{
     }//GEN-LAST:event_carta1MouseDragged
 
     private void carta1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carta1MouseReleased
-        if (queCuadranteEstoy(getMousePosition()) != Cuadrante.ESPACIO_INVALIDO) {
-            
-
-            switch( queCuadranteEstoy(getMousePosition()) ){
-                case (Cuadrante.ESPACIO1):{
-                    jugarCarta(OrdenDeJugada.DESCENDIENTE, lesp1, esp1);
-                    break;
+        if(evt.getClickCount() != 2){
+            if (queCuadranteEstoy(getMousePosition()) != Cuadrante.ESPACIO_INVALIDO) {
+                switch( queCuadranteEstoy(getMousePosition()) ){
+                    case (Cuadrante.ESPACIO1):{
+                        jugarCarta(OrdenDeJugada.DESCENDIENTE, lesp1, esp1);
+                        break;
+                    }
+                    case (Cuadrante.ESPACIO2):{
+                        jugarCarta(OrdenDeJugada.DESCENDIENTE, lesp2, esp2);
+                        break;
+                    }
+                    case (Cuadrante.ESPACIO3):{
+                        jugarCarta(OrdenDeJugada.DESCENDIENTE, lesp3, esp3);
+                        break;
+                    }
+                    case (Cuadrante.ESPACIO4):{
+                        jugarCarta(OrdenDeJugada.DESCENDIENTE, lesp4, esp4);
+                        break;
+                    }
+                    case (Cuadrante.ESPACIO5):{
+                        jugarCarta(OrdenDeJugada.ASCENDENTE, lesp5, esp5);
+                        break;
+                    }
+                    case (Cuadrante.ESPACIO6):{
+                        jugarCarta(OrdenDeJugada.ASCENDENTE, lesp6, esp6);
+                        break;
+                    }
+                    case (Cuadrante.ESPACIO7):{
+                        jugarCarta(OrdenDeJugada.ASCENDENTE, lesp7, esp7);
+                        break;
+                    }
+                    case (Cuadrante.ESPACIO8):{
+                        jugarCarta(OrdenDeJugada.ASCENDENTE, lesp8, esp8);
+                        break;
+                    }
                 }
-                case (Cuadrante.ESPACIO2):{
-                    jugarCarta(OrdenDeJugada.DESCENDIENTE, lesp2, esp2);
-                    break;
-                }
-                case (Cuadrante.ESPACIO3):{
-                    jugarCarta(OrdenDeJugada.DESCENDIENTE, lesp3, esp3);
-                    break;
-                }
-                case (Cuadrante.ESPACIO4):{
-                    jugarCarta(OrdenDeJugada.DESCENDIENTE, lesp4, esp4);
-                    break;
-                }
-                case (Cuadrante.ESPACIO5):{
-                    jugarCarta(OrdenDeJugada.ASCENDENTE, lesp5, esp5);
-                    break;
-                }
-                case (Cuadrante.ESPACIO6):{
-                    jugarCarta(OrdenDeJugada.ASCENDENTE, lesp6, esp6);
-                    break;
-                }
-                case (Cuadrante.ESPACIO7):{
-                    jugarCarta(OrdenDeJugada.ASCENDENTE, lesp7, esp7);
-                    break;
-                }
-                case (Cuadrante.ESPACIO8):{
-                    jugarCarta(OrdenDeJugada.ASCENDENTE, lesp8, esp8);
-                    break;
+            }
+        }else{ //doble click
+            int n = getEspacioJugable(mazo.getCarta(indice));
+            System.out.println("Doble click: espacio jugable: "+n);
+            if(n != -1){
+                switch(n){
+                    case (Cuadrante.ESPACIO1):{
+                        jugarCarta(OrdenDeJugada.DESCENDIENTE, lesp1, esp1);
+                        break;
+                    }
+                    case (Cuadrante.ESPACIO2):{
+                        jugarCarta(OrdenDeJugada.DESCENDIENTE, lesp2, esp2);
+                        break;
+                    }
+                    case (Cuadrante.ESPACIO3):{
+                        jugarCarta(OrdenDeJugada.DESCENDIENTE, lesp3, esp3);
+                        break;
+                    }
+                    case (Cuadrante.ESPACIO4):{
+                        jugarCarta(OrdenDeJugada.DESCENDIENTE, lesp4, esp4);
+                        break;
+                    }
+                    case (Cuadrante.ESPACIO5):{
+                        jugarCarta(OrdenDeJugada.ASCENDENTE, lesp5, esp5);
+                        break;
+                    }
+                    case (Cuadrante.ESPACIO6):{
+                        jugarCarta(OrdenDeJugada.ASCENDENTE, lesp6, esp6);
+                        break;
+                    }
+                    case (Cuadrante.ESPACIO7):{
+                        jugarCarta(OrdenDeJugada.ASCENDENTE, lesp7, esp7);
+                        break;
+                    }
+                    case (Cuadrante.ESPACIO8):{
+                        jugarCarta(OrdenDeJugada.ASCENDENTE, lesp8, esp8);
+                        break;
+                    }
                 }
             }
         }
@@ -375,8 +508,40 @@ public class Aplicacion extends javax.swing.JFrame{
     }//GEN-LAST:event_carta1MouseClicked
 
 private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-    cartaVueltaMousePressed(null);
+    cartaVueltaMouseReleased(null);
 }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void cartaVueltaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartaVueltaMouseReleased
+        reubicarCarta();
+        indice -= 2;
+        cartas(indice);
+    }//GEN-LAST:event_cartaVueltaMouseReleased
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        formBar.setBounds(0, 0, 610, 230);
+        formBar.setLocationRelativeTo(null);
+        formBar.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void esp13MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_esp13MouseReleased
+        cabiarFondoCartaVuelta(Imagen.ARU);
+    }//GEN-LAST:event_esp13MouseReleased
+
+    private void esp12MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_esp12MouseReleased
+        cabiarFondoCartaVuelta(Imagen.ANGELES);
+    }//GEN-LAST:event_esp12MouseReleased
+
+    private void esp11MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_esp11MouseReleased
+        cabiarFondoCartaVuelta(Imagen.FABI);
+    }//GEN-LAST:event_esp11MouseReleased
+
+    private void esp10MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_esp10MouseReleased
+        cabiarFondoCartaVuelta(Imagen.PATO);
+    }//GEN-LAST:event_esp10MouseReleased
+
+    private void esp9MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_esp9MouseReleased
+        cabiarFondoCartaVuelta(Imagen.GILDA);
+    }//GEN-LAST:event_esp9MouseReleased
 
     /**
      * @param args the command line arguments
@@ -406,6 +571,10 @@ private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JLabel cartaVuelta;
     private javax.swing.JLabel cartasRestantes;
     private javax.swing.JLabel esp1;
+    private javax.swing.JLabel esp10;
+    private javax.swing.JLabel esp11;
+    private javax.swing.JLabel esp12;
+    private javax.swing.JLabel esp13;
     private javax.swing.JLabel esp2;
     private javax.swing.JLabel esp3;
     private javax.swing.JLabel esp4;
@@ -413,8 +582,11 @@ private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JLabel esp6;
     private javax.swing.JLabel esp7;
     private javax.swing.JLabel esp8;
+    private javax.swing.JLabel esp9;
     private javax.swing.JLabel fondo;
+    private javax.swing.JFrame formBar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -423,17 +595,18 @@ private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem menuItemAcercade;
     private javax.swing.JCheckBoxMenuItem verCartaAbajo;
     // End of variables declaration//GEN-END:variables
 
     private void cartas(int indice) {
-//        System.out.println(indice);
+        
         if (indice == 0) {//si estoy en la primera posicion
             Cambiar.fondoDeLabel(this, cartaVuelta, Imagen.VACIA);
         } else {
-            Cambiar.fondoDeLabel(this, cartaVuelta, Imagen.CARTA_ROJA);
+            Cambiar.fondoDeLabel(this, cartaVuelta, Imagen.CARTA_VUELTA);
         }
 
         if (indice < 0) {//tengo que saber que numero es, ya que me pase del limite de la lista
@@ -458,7 +631,7 @@ private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             }
         }
         cartasRestantes.setText(Integer.toString(mazo.getMazo().size()));
-
+        jLabel2.setText(Integer.toString((indice == -2?mazo.getMazo().size()-2:indice)));
     }
 
     private int queCuadranteEstoy(Point p) {
@@ -488,14 +661,15 @@ private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         carta1.setBounds(260, 410, 120, 170);
     }
 
-    private void jugarCarta(int ordenDeJugada, List lista, javax.swing.JLabel lbl) {
+    private void jugarCarta(int ordenDeJugada, List<Carta> lista, javax.swing.JLabel lbl) {
 //        if (queCuadranteEstoy(getMousePosition()).equalsIgnoreCase(nombreEspacio)) {
             if (lista.isEmpty()) {
                 if (mazo.getCarta(indice).getNumero() == (ordenDeJugada == OrdenDeJugada.ASCENDENTE ? 1 : 13)) {
-                    Cambiar.fondoDeLabel(this, lbl, Imagen.RAIZ + mazo.getCarta(indice).getPinta() + "/" + mazo.getCarta(indice).getNumero() + Imagen.EXTENSION);
-                    lista.add(mazo.getCarta(indice));
-                    mazo.getMazo().remove(indice);
-                    cartas(indice);
+                    agregarCartaALista(lista, mazo.getCarta(indice),ordenDeJugada, lbl);
+                    
+//                    lista.add(mazo.getCarta(indice));
+//                    mazo.getMazo().remove(indice);
+//                    cartas(indice);
                 } else {
                     reubicarCarta();
                 }
@@ -504,23 +678,116 @@ private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 int numero = carta.getNumero();
                 String pinta = carta.getPinta();
 
-
-
-                if (mazo.getCarta(indice).getNumero() == (ordenDeJugada == OrdenDeJugada.ASCENDENTE ? numero + 1 : numero - 1) && mazo.getCarta(indice).getPinta().equalsIgnoreCase(pinta)) {
-                    Cambiar.fondoDeLabel(this, lbl, "/imagenes/" + mazo.getCarta(indice).getPinta() + "/" + mazo.getCarta(indice).getNumero() + ".png");
-                    lista.add(mazo.getCarta(indice));
-                    mazo.getMazo().remove(indice);
-                    cartas(indice);
+                if (mazo.getCarta(indice).getNumero() == (ordenDeJugada == OrdenDeJugada.ASCENDENTE ? numero + 1 : numero - 1) 
+                        && mazo.getCarta(indice).getPinta().equalsIgnoreCase(pinta)) {
+                    
+                    agregarCartaALista(lista, mazo.getCarta(indice),ordenDeJugada, lbl);
+                    
                 }
                 reubicarCarta();
             }
 //        }
     
     }
+    
+    private boolean agregarCartaALista(List<Carta> lista, Carta c, int ordenDeJugada, JLabel lbl){
+        //antes tengo que ver si no esta la pinta en otra lista
+        
+        if(ordenDeJugada == OrdenDeJugada.ASCENDENTE){//5,6,7,8
+            if(lista == lesp5){// si es asi, tengo que ver que la pinta no este ni en 6, 7 y 8
+                if(isPintaInLista(lesp6, c)){
+                    return false;
+                }
+                if(isPintaInLista(lesp7, c)){
+                    return false;
+                }
+                if(isPintaInLista(lesp8, c)){
+                    return false;
+                }
+            }else if(lista == lesp6){
+                if(isPintaInLista(lesp5, c)){
+                    return false;
+                }
+                if(isPintaInLista(lesp7, c)){
+                    return false;
+                }
+                if(isPintaInLista(lesp8, c)){
+                    return false;
+                }
+            }else if(lista == lesp7){
+                if(isPintaInLista(lesp5, c)){
+                    return false;
+                }
+                if(isPintaInLista(lesp6, c)){
+                    return false;
+                }
+                if(isPintaInLista(lesp8, c)){
+                    return false;
+                }
+            }else{
+                if(isPintaInLista(lesp5, c)){
+                    return false;
+                }
+                if(isPintaInLista(lesp6, c)){
+                    return false;
+                }
+                if(isPintaInLista(lesp7, c)){
+                    return false;
+                }
+            }
+        }else if(lista == lesp1){
+            
+                if(isPintaInLista(lesp2, c)){
+                    return false;
+                }
+                if(isPintaInLista(lesp3, c)){
+                    return false;
+                }
+                if(isPintaInLista(lesp4, c)){
+                    return false;
+                }
+            }else if(lista == lesp2){
+                if(isPintaInLista(lesp1, c)){
+                    return false;
+                }
+                if(isPintaInLista(lesp3, c)){
+                    return false;
+                }
+                if(isPintaInLista(lesp4, c)){
+                    return false;
+                }
+            }else if(lista == lesp3){
+                if(isPintaInLista(lesp1, c)){
+                    return false;
+                }
+                if(isPintaInLista(lesp2, c)){
+                    return false;
+                }
+                if(isPintaInLista(lesp4, c)){
+                    return false;
+                }
+            }else{
+                if(isPintaInLista(lesp1, c)){
+                    return false;
+                }
+                if(isPintaInLista(lesp2, c)){
+                    return false;
+                }
+                if(isPintaInLista(lesp3, c)){
+                    return false;
+                }
+            }
+        Cambiar.fondoDeLabel(this, lbl, Imagen.RAIZ + mazo.getCarta(indice).getPinta() + "/" + mazo.getCarta(indice).getNumero() + Imagen.EXTENSION);
+//        Cambiar.fondoDeLabel(this, lbl, "/imagenes/" + mazo.getCarta(indice).getPinta() + "/" + mazo.getCarta(indice).getNumero() + ".png");
+        lista.add(mazo.getCarta(indice));
+        mazo.getMazo().remove(indice);
+        cartas(indice);
+        return true;
+    }
 
     private void borrarLista(List lis) {
         for (int i = 0; i < lis.size(); i++) {
-            lis.remove(i);
+            System.out.println(lis.remove(i));;
         }
     }
 
@@ -555,5 +822,142 @@ private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private void initAcercaDe() {
         AcercaDe ad = new AcercaDe("JSolitario", "Un juego solitario, jugado en Chile, hecho en Java", "Patricio Pérez Pinto", "2012", "Patricio Pérez Pinto", GPL.AMBAS_VERSIONES);
         ad.addComponent(this.menuItemAcercade);
+    }
+
+    private boolean isPintaInLista(List<Carta> lista, Carta c) {
+        try{
+            Carta carta = lista.get(0);
+            if(carta != null){
+                if(carta.getPinta().equalsIgnoreCase(c.getPinta())){
+                    return true;
+                }else return false;
+            }
+            else return false;
+        }catch(IndexOutOfBoundsException ex){
+            return false;
+        }
+    }
+
+    private int getEspacioJugable(Carta carta) {
+        if(lesp1.isEmpty() && carta.getNumero() == 13){
+            return 1;
+        }
+        
+        if(lesp2.isEmpty() && carta.getNumero() == 13){
+            return 2;
+        }
+        
+        if(lesp3.isEmpty() && carta.getNumero() == 13){
+            return 3;
+        }
+        if(lesp4.isEmpty() && carta.getNumero() == 13){
+            return 4;
+        }
+        
+        if(lesp5.isEmpty() && carta.getNumero() == 1){
+            return 5;
+        }
+        
+        if(lesp6.isEmpty() && carta.getNumero() == 1){
+            return 6;
+        }
+        
+        if(lesp7.isEmpty() && carta.getNumero() == 1){
+            return 7;
+        }
+        
+        if(lesp8.isEmpty() && carta.getNumero() == 1){
+            return 8;
+        }
+        //aca ya hay cartas en las listas
+        Carta ultimaCarta;
+        int numero;
+        String pinta;
+        
+        if(!lesp1.isEmpty()){
+            ultimaCarta = lesp1.get(lesp1.size()-1);//obtengo la ultima carta
+            numero = ultimaCarta.getNumero();
+            pinta = ultimaCarta.getPinta();
+            if(pinta.equalsIgnoreCase(carta.getPinta()) && numero == carta.getNumero()+1){
+                return 1;
+            }
+        }
+        
+        if(!lesp2.isEmpty()){
+            ultimaCarta = lesp2.get(lesp2.size()-1);//obtengo la ultima carta
+            numero = ultimaCarta.getNumero();
+            pinta = ultimaCarta.getPinta();
+            if(pinta.equalsIgnoreCase(carta.getPinta()) && numero == carta.getNumero()+1){
+                return 2;
+            }
+        }
+        
+        
+        if(!lesp3.isEmpty()){
+            ultimaCarta = lesp3.get(lesp3.size()-1);//obtengo la ultima carta
+            numero = ultimaCarta.getNumero();
+            pinta = ultimaCarta.getPinta();
+            if(pinta.equalsIgnoreCase(carta.getPinta()) && numero == carta.getNumero()+1){
+                return 3;
+            }
+        }
+        
+        
+        if(!lesp4.isEmpty()){
+            ultimaCarta = lesp4.get(lesp4.size()-1);//obtengo la ultima carta
+            numero = ultimaCarta.getNumero();
+            pinta = ultimaCarta.getPinta();
+            if(pinta.equalsIgnoreCase(carta.getPinta()) && numero == carta.getNumero()+1){
+                return 4;
+            }
+        }
+        
+        
+        if(!lesp5.isEmpty()){
+            ultimaCarta = lesp5.get(lesp5.size()-1);//obtengo la ultima carta
+            numero = ultimaCarta.getNumero();
+            pinta = ultimaCarta.getPinta();
+            if(pinta.equalsIgnoreCase(carta.getPinta()) && numero == carta.getNumero()-1){
+                return 5;
+            }
+        }
+        
+        
+        if(!lesp6.isEmpty()){
+            ultimaCarta = lesp6.get(lesp6.size()-1);//obtengo la ultima carta
+            numero = ultimaCarta.getNumero();
+            pinta = ultimaCarta.getPinta();
+            if(pinta.equalsIgnoreCase(carta.getPinta()) && numero == carta.getNumero()-1){
+                return 6;
+            }
+        }
+        
+        
+        if(!lesp7.isEmpty()){
+             ultimaCarta = lesp7.get(lesp7.size()-1);//obtengo la ultima carta
+            numero = ultimaCarta.getNumero();
+            pinta = ultimaCarta.getPinta();
+            if(pinta.equalsIgnoreCase(carta.getPinta()) && numero == carta.getNumero()-1){
+                return 7;
+            }
+        }
+       
+        
+        if(!lesp8.isEmpty()){
+            ultimaCarta = lesp8.get(lesp8.size()-1);//obtengo la ultima carta
+            numero = ultimaCarta.getNumero();
+            pinta = ultimaCarta.getPinta();
+            if(pinta.equalsIgnoreCase(carta.getPinta()) && numero == carta.getNumero()-1){
+                return 8;
+            }
+        }
+        
+        
+        return -1;
+    }
+
+    private void cabiarFondoCartaVuelta(String ruta) {
+        Imagen.CARTA_VUELTA = ruta;
+        Cambiar.fondoDeLabel(this, cartaVuelta, Imagen.CARTA_VUELTA);
     }
 }
