@@ -1,0 +1,1 @@
+Juego del solitario, famoso en Chile hecho en Java (Netbeans y JDK 7)
